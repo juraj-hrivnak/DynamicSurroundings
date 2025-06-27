@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicSurroundings.api.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicSurroundings.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicSurroundings.ideVirtualMain.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicSurroundings.ideVirtualMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicSurroundings.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicSurroundings.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicSurroundings.patchedMc.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicSurroundings.patchedMc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicSurroundings.test.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicSurroundings.test.iml" />
+    </modules>
+  </component>
+</project>
