@@ -12,7 +12,6 @@ plugins {
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
     id("eclipse")
     id("com.gtnewhorizons.retrofuturagradle") version "1.3.27"
-    id("com.matthewprenger.cursegradle") version "1.4.0"
 }
 
 val mod_version: String by project
@@ -125,13 +124,14 @@ repositories {
 dependencies {
 
     // OreLib
-    implementation("curse.maven:OreLib-307806:2820815")
+    // https://www.curseforge.com/minecraft/mc-mods/orelib/files
+    implementation(rfg.deobf("curse.maven:OreLib-307806:2820815"))
 
     // Animania
-    implementation("curse.maven:CraftStudioAPI-268704:2661859")
-    implementation("com.animania:animania-1.12.2-base:2.0.3.28")
-    implementation("com.animania:animania-1.12.2-farm:1.0.2.28")
-    implementation("com.animania:animania-1.12.2-extra:1.0.2.28")
+    compileOnly("curse.maven:CraftStudioAPI-268704:2661859")
+    compileOnly("com.animania:animania-1.12.2-base:2.0.3.28")
+    compileOnly("com.animania:animania-1.12.2-farm:1.0.2.28")
+    compileOnly("com.animania:animania-1.12.2-extra:1.0.2.28")
 
     // CosmeticArmorReworked
     compileOnly("curse.maven:CosmeticArmorReworked-237307:2660068")
@@ -160,7 +160,7 @@ dependencies {
         implementation("com.cleanroommc:assetmover:2.5")
     }
     if (use_mixins.toBoolean()) {
-        implementation("zone.rong:mixinbooter:7.1")
+        implementation("zone.rong:mixinbooter:8.1")
     }
 
     if (use_mixins.toBoolean()) {
