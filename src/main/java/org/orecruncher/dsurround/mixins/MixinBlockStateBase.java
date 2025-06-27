@@ -29,10 +29,12 @@ import org.orecruncher.dsurround.registry.blockstate.BlockStateData;
 import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.block.state.BlockStateBase;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(BlockStateBase.class)
 public abstract class MixinBlockStateBase implements IDataAccessor<BlockStateData> {
 
+	@Unique
 	private BlockStateData dsurround_blockstate_info = null;
 
 	@Override

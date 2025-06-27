@@ -36,12 +36,13 @@ import net.minecraftforge.fml.client.config.GuiConfigEntries;
 @Mixin(GuiConfig.class)
 public class MixinGuiConfig {
 
-	//@formatter:off
 	@Redirect(
-		method = "*",
-		at = @At(value = "NEW", target = "(Lnet/minecraftforge/fml/client/config/GuiConfig;Lnet/minecraft/client/Minecraft;)Lnet/minecraftforge/fml/client/config/GuiConfigEntries;")
+		method = "initGui()V",
+		at = @At(
+			value = "NEW",
+			target = "net/minecraftforge/fml/client/config/GuiConfigEntries"
+		)
 	)
-	//@formatter:on
 	public GuiConfigEntries constructEntries(GuiConfig parent, Minecraft mc) {
 		if (ModOptions.asm.enableOptionSearchASM)
 			return new GuiFilteredConfigEntries(parent, mc);

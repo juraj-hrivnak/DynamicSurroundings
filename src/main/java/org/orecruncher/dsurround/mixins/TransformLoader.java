@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableList;
-import org.orecruncher.dsurround.ModInfo;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import zone.rong.mixinbooter.IEarlyMixinLoader;
@@ -62,6 +61,6 @@ public class TransformLoader implements IFMLLoadingPlugin, IEarlyMixinLoader {
 
 	@Override
 	public List<String> getMixinConfigs() {
-		return ImmutableList.of("mixins." + ModInfo.MOD_ID + ".json");
+		return ImmutableList.of("mixins.dsurround.json");
 	}
 }

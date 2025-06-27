@@ -29,10 +29,12 @@ import org.orecruncher.dsurround.registry.item.IItemData;
 import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.item.Item;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(Item.class)
 public abstract class MixinItem implements IDataAccessor<IItemData> {
 
+	@Unique
 	private IItemData dsurround_item_info = null;
 
 	@Override
