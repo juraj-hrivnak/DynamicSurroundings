@@ -33,7 +33,6 @@ import net.minecraft.util.ResourceLocation;
 
 public enum RippleStyle {
 
-	//@formatter:off
 	ORIGINAL("textures/particles/ripple.png"),
 	CIRCLE("textures/particles/ripple1.png"),
 	SQUARE("textures/particles/ripple2.png"),
@@ -43,12 +42,14 @@ public enum RippleStyle {
 
 		@Override
 		public float getU1(final int age) {
-			return (age / 2.0F) * this.DELTA;
+			int frame = (age / 2);
+			return frame * this.DELTA;
 		}
 
 		@Override
 		public float getU2(final int age) {
-			return getU1(age) + this.DELTA;
+			int frame = (age / 2);
+			return (frame * this.DELTA) + this.DELTA;
 		}
 
 		@Override
@@ -61,7 +62,6 @@ public enum RippleStyle {
 			return this.FRAMES * 2;
 		}
 	};
-	//@formatter:on
 
 	private final ResourceLocation resource;
 

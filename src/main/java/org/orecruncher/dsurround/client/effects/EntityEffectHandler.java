@@ -103,20 +103,23 @@ public class EntityEffectHandler extends EntityEffectStateBase implements IEntit
 
 		this.isAlive = isSubjectAlive();
 
-		if (this.activeEffects != null) {
-			final Entity entity = this.subject.get();
-			if (entity != null) {
-				final EntityPlayer player = Minecraft.getMinecraft().player;
-				this.rangeToPlayer = entity.getDistanceSq(player);
+        if (this.activeEffects == null)
+            return;
 
-				for (int i = 0; i < this.activeEffects.size(); i++) {
-					final EntityEffect e = this.activeEffects.get(i);
-					if (this.isAlive || e.receiveLastCall())
-						e.update(entity);
-				}
-			}
-		}
-	}
+        final Entity entity = this.subject.get();
+
+        if (entity == null)
+            return;
+
+        final EntityPlayer player = Minecraft.getMinecraft().player;
+        this.rangeToPlayer = entity.getDistanceSq(player);
+
+        for (int i = 0; i < this.activeEffects.size(); i++) {
+            final EntityEffect e = this.activeEffects.get(i);
+            if (this.isAlive || e.receiveLastCall())
+                e.update(entity);
+        }
+    }
 
 	/**
 	 * Used for metric collection to distinguish between active handlers and

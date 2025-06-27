@@ -51,9 +51,9 @@ public abstract class MoteAgeable extends MoteParticle {
 	@Override
 	public void onUpdate() {
 
-		// The mote reached it's life expectancy
+		// The mote reached its life expectancy
 		if (advanceAge())
-			kill();
+			this.kill();
 
 		super.onUpdate();
 	}
