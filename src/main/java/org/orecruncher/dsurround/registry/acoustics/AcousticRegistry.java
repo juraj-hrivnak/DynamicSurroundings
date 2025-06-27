@@ -197,7 +197,7 @@ public class AcousticRegistry extends Registry {
 		final String soundName;
 		final SoundType type = MCHelper.getSoundType(state);
 		if (type != null && type.getStepSound() != null
-				&& !type.getStepSound().getSoundName().getResourceDomain().isEmpty()) {
+				&& !type.getStepSound().getSoundName().getNamespace().isEmpty()) {
 			soundName = type.getStepSound().getSoundName().toString();
 		} else {
 			soundName = null;

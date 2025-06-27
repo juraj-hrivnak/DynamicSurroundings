@@ -1,19 +1,15 @@
 [
 	{
-		"modid": "${mod_id}",
-		"name": "${mod_name}",
-		"description": "${mod_description}",
+		"modid": "dsurround",
+		"name": "Dynamic Surroundings: RotN Edition",
+		"description": "Adds a variety of sound and visual effects to improve your Minecraft experience",
 		"version": "${version}",
 		"mcversion": "${mcversion}",
 		"url": "https://dynamicsurroundings.readthedocs.io",
-		"updateUrl": "${update_url}",
-		"updateJSON": "${update_url}",
-		"authorList": ["${mod_author}"],
+		"authorList": ["OreCruncher"],
 		"credits": "Wirsbo for BetterRain; MrRube for Aurora Rubealis; Hurricaaane for Presence Footsteps and MAtmos; Mr_okushama for Battle Music; Ezer'Arch for Galacticraft configurations",
 		"logoFile": "assets/dsurround/textures/logo.png",
-		"screenshots": [
-		],
-		"dependencies": [
-		]
+		"screenshots": [],
+		"dependencies": []
 	}
 ]

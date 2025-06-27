@@ -117,8 +117,8 @@ public final class FootStrikeLocation {
 	@Nonnull
 	public Vec3d offset(@Nonnull final EnumFacing facing, final float n) {
 		return n == 0 ? this.strike
-				: new Vec3d(this.strike.x + facing.getFrontOffsetX() * n, this.strike.y + facing.getFrontOffsetY() * n,
-						this.strike.z + facing.getFrontOffsetZ() * n);
+				: new Vec3d(this.strike.x + facing.getXOffset() * n, this.strike.y + facing.getYOffset() * n,
+						this.strike.z + facing.getZOffset() * n);
 	}
 
 	/**
@@ -126,10 +126,6 @@ public final class FootStrikeLocation {
 	 * print is to ride on top of the bounding box. If the block does not have a
 	 * print a null is returned.
 	 *
-	 * @param entity The Entity generating the print
-	 * @param pos    The block position where the footprint is to be placed on top
-	 * @param xx     Calculated foot position for X
-	 * @param zz     Calculated foot position for Z
 	 * @return Vector containing footprint coordinates or null if no footprint is to
 	 *         be generated
 	 */

@@ -95,7 +95,7 @@ public class SoundConfigEntry extends NumberSliderEntry {
 		final ResourceLocation soundResource = new ResourceLocation(soundName);
 		String modName = ForgeUtils.getModName(soundResource);
 		if ("UNKNOWN".equals(modName))
-			modName = soundResource.getResourceDomain();
+			modName = soundResource.getNamespace();
 		text.add(TextFormatting.GREEN + modName);
 		text.add(TextFormatting.GOLD + soundName);
 
