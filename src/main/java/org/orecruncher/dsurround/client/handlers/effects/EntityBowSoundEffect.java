@@ -61,25 +61,28 @@ public class EntityBowSoundEffect extends EntityEffect {
 	public void update(@Nonnull final Entity subject) {
 		final EntityLivingBase entity = (EntityLivingBase) subject;
 		final ItemStack currentStack = entity.getActiveItemStack();
-		if (ItemStackUtil.isValidItemStack(currentStack)) {
-			if (!ItemStack.areItemStacksEqual(currentStack, this.lastActiveStack)) {
-				final IItemData data = ItemUtils.getItemData(currentStack.getItem());
-				final ItemClass itemClass = data.getItemClass();
-				if (itemClass == ItemClass.BOW || itemClass == ItemClass.SHIELD) {
-					final SoundEffect soundEffect = data.getUseSound(currentStack);
-					if (soundEffect != null) {
-						final ISoundInstance fx = getState().createSound(soundEffect, entity);
-						getState().playSound(fx);
-					}
-				}
 
-				this.lastActiveStack = currentStack;
-			}
-
-		} else {
+        if (!ItemStackUtil.isValidItemStack(currentStack)) {
 			this.lastActiveStack = ItemStack.EMPTY;
+			return;
 		}
-	}
+
+		if (ItemStack.areItemStacksEqual(currentStack, this.lastActiveStack))
+			return;
+
+		final IItemData data = ItemUtils.getItemData(currentStack.getItem());
+		final ItemClass itemClass = data.getItemClass();
+
+		if (itemClass == ItemClass.BOW || itemClass == ItemClass.SHIELD) {
+			final SoundEffect soundEffect = data.getUseSound(currentStack);
+			if (soundEffect != null) {
+				final ISoundInstance fx = getState().createSound(soundEffect, entity);
+				getState().playSound(fx);
+			}
+		}
+
+		this.lastActiveStack = currentStack;
+    }
 
 	public static final IEntityEffectFactoryFilter DEFAULT_FILTER = (@Nonnull final Entity e,
 			@Nonnull final EntityEffectInfo eei) -> eei.effects.contains("bow");

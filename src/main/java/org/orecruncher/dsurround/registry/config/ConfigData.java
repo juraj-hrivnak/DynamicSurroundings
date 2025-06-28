@@ -25,12 +25,12 @@ package org.orecruncher.dsurround.registry.config;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
@@ -47,6 +47,7 @@ import org.orecruncher.dsurround.ModBase;
 import org.orecruncher.dsurround.ModInfo;
 import org.orecruncher.dsurround.ModOptions;
 import org.orecruncher.dsurround.registry.config.Profiles.ProfileScript;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
 import org.orecruncher.dsurround.registry.config.packs.IMyResourcePack;
 import org.orecruncher.dsurround.registry.config.packs.ResourcePacks;
 
@@ -236,7 +237,7 @@ public final class ConfigData implements Iterable<ModConfiguration> {
 				final File file = getFileReference(cfg);
 				if (file.exists()) {
 					ModBase.log().info("Loading external configuration script '%s'", cfg);
-					try (final InputStream stream = new FileInputStream(file)) {
+					try (final InputStream stream = Files.newInputStream(file.toPath())) {
 						try (final InputStreamReader input = new InputStreamReader(stream)) {
 							prependComma = copy(input, output, cfg, prependComma);
 						} catch (final Throwable t) {

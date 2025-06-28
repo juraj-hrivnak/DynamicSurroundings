@@ -27,7 +27,7 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
-import org.orecruncher.dsurround.registry.config.BiomeConfig;
+import org.orecruncher.dsurround.registry.config.models.BiomeConfig;
 import org.orecruncher.lib.expression.BooleanValue;
 import org.orecruncher.lib.expression.Expression;
 import org.orecruncher.lib.expression.Function;

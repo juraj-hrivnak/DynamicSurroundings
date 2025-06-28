@@ -28,7 +28,7 @@ import javax.annotation.Nonnull;
 
 import org.orecruncher.dsurround.ModBase;
 import org.orecruncher.dsurround.registry.config.ConfigData;
-import org.orecruncher.dsurround.registry.config.ModConfiguration;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
 
 import net.minecraftforge.common.MinecraftForge;
 

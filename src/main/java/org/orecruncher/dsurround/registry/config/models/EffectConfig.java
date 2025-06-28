@@ -1,4 +1,5 @@
-/* This file is part of Dynamic Surroundings, licensed under the MIT License (MIT).
+/*
+ * This file is part of Dynamic Surroundings, licensed under the MIT License (MIT).
  *
  * Copyright (c) OreCruncher
  *
@@ -21,20 +22,19 @@
  * THE SOFTWARE.
  */
 
-package org.orecruncher.dsurround.registry.config;
+package org.orecruncher.dsurround.registry.config.models;
 
-import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
-import com.google.common.collect.ImmutableList;
 import com.google.gson.annotations.SerializedName;
 
-public class SoundMetadataConfig {
+public final class EffectConfig {
 
-	@SerializedName("category")
-	public String category = "neutral";
-	@SerializedName("title")
-	public String title = null;
-	@SerializedName("credits")
-	public List<String> credits = ImmutableList.of();
+	@SerializedName("effect")
+	public String effect = null;
+	@SerializedName("conditions")
+	public String conditions = StringUtils.EMPTY;
+	@SerializedName("chance")
+	public Integer chance = null;
 
 }

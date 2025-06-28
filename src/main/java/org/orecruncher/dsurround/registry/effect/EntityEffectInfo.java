@@ -25,7 +25,7 @@ package org.orecruncher.dsurround.registry.effect;
 import javax.annotation.Nonnull;
 
 import org.apache.commons.lang3.StringUtils;
-import org.orecruncher.dsurround.registry.config.EntityConfig;
+import org.orecruncher.dsurround.registry.config.models.EntityConfig;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

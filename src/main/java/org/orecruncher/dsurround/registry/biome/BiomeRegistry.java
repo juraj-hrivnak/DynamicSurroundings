@@ -37,8 +37,8 @@ import org.orecruncher.dsurround.ModOptions;
 import org.orecruncher.dsurround.capabilities.dimension.IDimensionInfo;
 import org.orecruncher.dsurround.client.handlers.EnvironStateHandler.EnvironState;
 import org.orecruncher.dsurround.registry.Registry;
-import org.orecruncher.dsurround.registry.config.BiomeConfig;
-import org.orecruncher.dsurround.registry.config.ModConfiguration;
+import org.orecruncher.dsurround.registry.config.models.BiomeConfig;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
 import org.orecruncher.lib.math.MathStuff;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;

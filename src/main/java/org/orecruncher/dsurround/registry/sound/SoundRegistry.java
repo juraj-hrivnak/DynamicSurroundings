@@ -40,7 +40,7 @@ import org.orecruncher.dsurround.client.sound.SoundConfigProcessor;
 import org.orecruncher.dsurround.client.sound.SoundEngine;
 import org.orecruncher.dsurround.client.sound.Sounds;
 import org.orecruncher.dsurround.registry.Registry;
-import org.orecruncher.dsurround.registry.config.ModConfiguration;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
 import org.orecruncher.lib.compat.PositionedSoundUtil;
 import org.orecruncher.lib.math.MathStuff;
 

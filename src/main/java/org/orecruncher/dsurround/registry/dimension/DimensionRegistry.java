@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
 import org.orecruncher.dsurround.ModBase;
 import org.orecruncher.dsurround.ModOptions;
 import org.orecruncher.dsurround.registry.Registry;
-import org.orecruncher.dsurround.registry.config.DimensionConfig;
-import org.orecruncher.dsurround.registry.config.ModConfiguration;
+import org.orecruncher.dsurround.registry.config.models.DimensionConfig;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
 
 import net.minecraft.world.World;
 

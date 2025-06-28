@@ -31,7 +31,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Nonnull;
 
-import org.orecruncher.dsurround.registry.config.SoundMetadataConfig;
+import org.orecruncher.dsurround.registry.config.models.SoundMetadataConfig;
 
 import com.google.gson.Gson;
 

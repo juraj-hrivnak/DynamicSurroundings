@@ -73,17 +73,27 @@ public class RandomBlockEffectScanner extends RandomScanner {
 	@Override
 	public void blockScan(@Nonnull final IBlockState state, @Nonnull final BlockPos pos, @Nonnull final Random rand) {
 		final IBlockAccessEx provider = this.locus.getWorld();
-		final BlockStateData profile = BlockStateUtil.getStateData(state);
-		final BlockEffect[] effects = profile.getEffects();
-		if (effects != BlockStateData.NO_EFFECTS)
-			for (final BlockEffect be : effects) {
-				if (be.canTrigger(provider, state, pos, rand))
-					be.doEffect(provider, state, pos, rand);
-			}
+		final BlockStateData blockStateData = BlockStateUtil.getStateData(state);
 
-		final SoundEffect sound = profile.getSoundToPlay(rand);
-		if (sound != null)
-			sound.doEffect(provider, state, pos, rand);
+		// -- BLOCK EFFECT --
+
+		final BlockEffect[] blockEffects = blockStateData.getEffects();
+
+		if (blockEffects != BlockStateData.NO_EFFECTS) {
+			for (final BlockEffect blockEffect : blockEffects) {
+				if (blockEffect.canTrigger(provider, state, pos, rand)) {
+					blockEffect.doEffect(provider, state, pos, rand);
+				}
+			}
+		}
+
+		// -- SOUND EFFECT --
+
+		final SoundEffect soundEffect = blockStateData.getSoundToPlay(rand);
+
+		if (soundEffect != null) {
+			soundEffect.doEffect(provider, state, pos, rand);
+		}
 	}
 
 }

@@ -40,8 +40,8 @@ import org.orecruncher.dsurround.registry.acoustics.AcousticRegistry;
 import org.orecruncher.dsurround.registry.acoustics.IAcoustic;
 import org.orecruncher.dsurround.registry.acoustics.RainSplashAcoustic;
 import org.orecruncher.dsurround.registry.blockstate.BlockStateMatcher;
-import org.orecruncher.dsurround.registry.config.ModConfiguration;
-import org.orecruncher.dsurround.registry.config.ModConfiguration.ForgeEntry;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration.ForgeEntry;
 import org.orecruncher.dsurround.registry.effect.EntityEffectInfo;
 import org.orecruncher.lib.ItemStackUtil;
 import org.orecruncher.lib.MCHelper;
@@ -215,7 +215,7 @@ public final class FootstepsRegistry extends Registry {
 	@Override
 	protected void complete() {
 		if (ModOptions.logging.enableDebugLogging) {
-			if (this.missingAcoustics.size() > 0) {
+			if (!this.missingAcoustics.isEmpty()) {
 				ModBase.log().info("          >>>> MISSING ACOUSTIC ENTRIES <<<< ");
 				ModBase.log().info("Sounds for these states will default to their step sound");
 				ModBase.log().info("========================================================");
@@ -359,7 +359,6 @@ public final class FootstepsRegistry extends Registry {
 					String blockName = null;
 					if (stack.getHasSubtypes() && stack.getItemDamage() != OreDictionary.WILDCARD_VALUE) {
 						try {
-							// TODO: Need to sort out with tagging in 1.13
 							final int meta = stack.getItem().getMetadata(stack);
 							@SuppressWarnings("deprecation")
 							final IBlockState state = block.getStateFromMeta(meta);

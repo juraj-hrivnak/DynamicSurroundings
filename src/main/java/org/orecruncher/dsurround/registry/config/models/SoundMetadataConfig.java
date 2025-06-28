@@ -20,17 +20,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.orecruncher.dsurround.registry.config;
 
-import org.apache.commons.lang3.StringUtils;
+package org.orecruncher.dsurround.registry.config.models;
 
+import java.util.List;
+
+import com.google.common.collect.ImmutableList;
 import com.google.gson.annotations.SerializedName;
 
-public class EntityConfig {
+public class SoundMetadataConfig {
 
-	@SerializedName("effects")
-	public String effects = StringUtils.EMPTY;
-	@SerializedName("variator")
-	public String variator = "default";
+	@SerializedName("category")
+	public String category = "neutral";
+	@SerializedName("title")
+	public String title = null;
+	@SerializedName("credits")
+	public List<String> credits = ImmutableList.of();
 
 }

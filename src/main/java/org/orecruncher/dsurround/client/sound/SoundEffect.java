@@ -35,8 +35,8 @@ import org.orecruncher.dsurround.client.handlers.EnvironStateHandler.EnvironStat
 import org.orecruncher.dsurround.client.handlers.SoundEffectHandler;
 import org.orecruncher.dsurround.expression.ExpressionEngine;
 import org.orecruncher.dsurround.registry.RegistryManager;
-import org.orecruncher.dsurround.registry.config.SoundConfig;
-import org.orecruncher.dsurround.registry.config.SoundType;
+import org.orecruncher.dsurround.registry.config.models.SoundConfig;
+import org.orecruncher.dsurround.registry.config.models.SoundType;
 import org.orecruncher.dsurround.registry.sound.SoundMetadata;
 import org.orecruncher.dsurround.registry.sound.SoundRegistry;
 import org.orecruncher.lib.WeightTable;
@@ -284,51 +284,55 @@ public final class SoundEffect implements ISpecialEffect, IEntrySource<SoundEffe
 			this.effect = new SoundEffect(resource, cat);
 		}
 
-		public Builder(@Nonnull final SoundConfig record) {
-			final ResourceLocation resource = new ResourceLocation(record.sound);
+		public Builder(@Nonnull final SoundConfig soundConfig) {
+			final ResourceLocation resource = new ResourceLocation(soundConfig.sound);
 			this.effect = new SoundEffect(resource, null);
 
-			setConditions(StringUtils.isEmpty(record.conditions) ? StringUtils.EMPTY : record.conditions.intern());
-			setVolume(record.volume == null ? 1.0F : record.volume);
-			setPitch(record.pitch == null ? 1.0F : record.pitch);
-			setWeight(record.weight == null ? 10 : record.weight);
-			setVariablePitch(record.variable != null && record.variable);
-			setRepeatDelay(record.repeatDelay == null ? 0 : record.repeatDelay);
-			setRepeatDelayRandom(record.repeatDelayRandom == null ? 0 : record.repeatDelayRandom);
-			setSoundTitle(record.title != null ? record.title : StringUtils.EMPTY);
+			setConditions(StringUtils.isEmpty(soundConfig.conditions) ? StringUtils.EMPTY : soundConfig.conditions.intern());
+			setVolume(soundConfig.volume == null ? 1.0F : soundConfig.volume);
+			setPitch(soundConfig.pitch == null ? 1.0F : soundConfig.pitch);
+			setWeight(soundConfig.weight == null ? 10 : soundConfig.weight);
+			setVariablePitch(soundConfig.variable != null && soundConfig.variable);
+			setRepeatDelay(soundConfig.repeatDelay == null ? 0 : soundConfig.repeatDelay);
+			setRepeatDelayRandom(soundConfig.repeatDelayRandom == null ? 0 : soundConfig.repeatDelayRandom);
+			setSoundTitle(soundConfig.title != null ? soundConfig.title : StringUtils.EMPTY);
 
-			SoundType t = null;
-			if (record.soundType != null)
-				t = SoundType.getType(record.soundType);
+			// -- SOUND TYPE --
 
-			if (t == null) {
-				if (record.repeatDelay != null && record.repeatDelay > 0)
-					t = SoundType.PERIODIC;
-				else if (record.spotSound != null && record.spotSound)
-					t = SoundType.SPOT;
+			SoundType soundType = null;
+			if (soundConfig.soundType != null)
+				soundType = SoundType.getType(soundConfig.soundType);
+
+			if (soundType == null) {
+				if (soundConfig.repeatDelay != null && soundConfig.repeatDelay > 0)
+					soundType = SoundType.PERIODIC;
+				else if (soundConfig.spotSound != null && soundConfig.spotSound)
+					soundType = SoundType.SPOT;
 				else
-					t = SoundType.BACKGROUND;
+					soundType = SoundType.BACKGROUND;
 			}
 
-			setSoundType(t);
+			setSoundType(soundType);
 
-			SoundCategory sc = null;
-			if (record.soundCategory != null)
-				sc = SoundCategory.getByName(record.soundCategory);
+			// -- SOUND CATEGORY --
 
-			if (sc == null) {
+			SoundCategory soundCategory = null;
+			if (soundConfig.soundCategory != null)
+				soundCategory = SoundCategory.getByName(soundConfig.soundCategory);
+
+			if (soundCategory == null) {
 				// There isn't an override - defer to the category info in
 				// the sounds.json.
 				final SoundMetadata meta = RegistryManager.SOUND.getSoundMetadata(resource);
 				if (meta != null)
-					sc = meta.getCategory();
+					soundCategory = meta.getCategory();
 
 				// No info in sounds.json - best guess.
-				if (sc == null)
-					sc = SoundCategory.AMBIENT;
+				if (soundCategory == null)
+					soundCategory = SoundCategory.AMBIENT;
 			}
 
-			setSoundCategory(sc);
+			setSoundCategory(soundCategory);
 		}
 
 		public Builder setSoundTitle(@Nonnull final String title) {

@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package org.orecruncher.dsurround.registry.config;
+package org.orecruncher.dsurround.registry.config.models;
 
 import java.util.List;
 import java.util.Map;

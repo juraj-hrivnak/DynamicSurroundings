@@ -262,14 +262,16 @@ public final class SoundEngine {
 		final SoundSystem sndSystem = getSoundSystem();
 		synchronized (SoundSystemConfig.THREAD_SYNC) {
 			final Map<String, Source> sounds = getSoundLibrary().getSources();
-			final List<String> remove = sounds.entrySet().stream().filter(e -> !playingSounds.containsKey(e.getKey()))
+			final List<String> remove = sounds.entrySet().stream()
+					.filter(e -> !playingSounds.containsKey(e.getKey()))
 					.map(e -> {
 						final Source src = e.getValue();
 						ModBase.log().debug("Killing orphaned sound [%s]",
 								src.filenameURL != null ? src.filenameURL.getFilename() : "UNKNOWN");
 						cleanupSource(src);
 						return e.getKey();
-					}).collect(Collectors.toList());
+					})
+					.collect(Collectors.toList());
 			remove.forEach(sndSystem::removeSource);
 		}
 	}
@@ -288,7 +290,8 @@ public final class SoundEngine {
 	 *
 	 * @param event Event that was raised
 	 */
-	@SubscribeEvent(priority = EventPriority.LOW)
+	@SuppressWarnings("unused")
+    @SubscribeEvent(priority = EventPriority.LOW)
 	public void clientTick(@Nonnull final TickEvent.ClientTickEvent event) {
 		if (event.side == Side.CLIENT && event.phase == Phase.END) {
 			final Map<ISound, Integer> delayedSounds = getDelayedSounds();
@@ -303,34 +306,34 @@ public final class SoundEngine {
 			// if the sound is in the playing lists or not.
 			this.queuedSounds.removeIf(sound -> {
 				switch (sound.getState()) {
-				case QUEUED:
-					// The sound is being held in the queue waiting for space
-					// in the Minecraft sound engine. If there is space, send
-					// it down.
-					if (canFitSound()) {
-						playSound0(sound);
-					}
-					break;
-				case DELAYED:
-					// The sound play is delayed. Check to see if Minecraft
-					// transitioned it's state.
-					if (!delayedSounds.containsKey(sound)) {
-						sound.setState(playingInv.containsKey(sound) ? SoundState.PLAYING : SoundState.DONE);
-					}
-					break;
-				case PLAYING:
-					// The sound is playing. Check to see if the Minecraft
-					// sound engine transitioned to a different state.
-					if (!playingInv.containsKey(sound)) {
-						sound.setState(delayedSounds.containsKey(sound) ? SoundState.DELAYED : SoundState.DONE);
-					}
-					break;
-				case NONE:
-					// This should not happen, but to be safe
-					sound.setState(SoundState.ERROR);
-					break;
-				default:
-					break;
+					case QUEUED:
+						// The sound is being held in the queue waiting for space
+						// in the Minecraft sound engine. If there is space, send
+						// it down.
+						if (canFitSound()) {
+							playSound0(sound);
+						}
+						break;
+					case DELAYED:
+						// The sound play is delayed. Check to see if Minecraft
+						// transitioned it's state.
+						if (!delayedSounds.containsKey(sound)) {
+							sound.setState(playingInv.containsKey(sound) ? SoundState.PLAYING : SoundState.DONE);
+						}
+						break;
+					case PLAYING:
+						// The sound is playing. Check to see if the Minecraft
+						// sound engine transitioned to a different state.
+						if (!playingInv.containsKey(sound)) {
+							sound.setState(delayedSounds.containsKey(sound) ? SoundState.DELAYED : SoundState.DONE);
+						}
+						break;
+					case NONE:
+						// This should not happen, but to be safe
+						sound.setState(SoundState.ERROR);
+						break;
+					default:
+						break;
 				}
 				// Remove all terminal sounds because they no longer
 				// need to be tracked.
@@ -380,7 +383,8 @@ public final class SoundEngine {
 	 *
 	 * @param event Incoming event that has been raised
 	 */
-	@SubscribeEvent
+	@SuppressWarnings("unused")
+    @SubscribeEvent
 	public void onSoundSourceEvent(@Nonnull final SoundSourceEvent event) {
 		this.guard.check("playSound");
 		this.playedSoundId = event.getUuid();
@@ -391,7 +395,8 @@ public final class SoundEngine {
 	 *
 	 * @param event Event that has been raised.
 	 */
-	@SubscribeEvent(priority = EventPriority.LOW)
+	@SuppressWarnings("unused")
+    @SubscribeEvent(priority = EventPriority.LOW)
 	public void diagnostics(final DiagnosticEvent.Gather event) {
 
 		event.output.add(TextFormatting.AQUA + "SoundSystem: " + currentSoundCount() + "/" + maxSounds);
@@ -423,8 +428,8 @@ public final class SoundEngine {
 				|| (sound instanceof TrackingSoundInstance && ModOptions.sound.enableBattleMusic)));
 	}
 
-	// SOUND may not be initialized if Forge did not initialized Minecraft fully.
-	// That can happen if the environment does not meet it's dependency
+	// SOUND may not be initialized if Forge did not initialize Minecraft fully.
+	// That can happen if the environment does not meet its dependency
 	// requirements.
 	private static float getVolumeScale(@Nullable final ISound sound) {
 		if (sound == null)
@@ -466,7 +471,6 @@ public final class SoundEngine {
 		int totalChannels = -1;
 
 		try {
-
 			final boolean create = !AL.isCreated();
 			if (create) {
 				AL.create();

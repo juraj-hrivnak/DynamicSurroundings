@@ -38,9 +38,9 @@ import org.orecruncher.dsurround.capabilities.season.TemperatureRating;
 import org.orecruncher.dsurround.client.handlers.BiomeSoundEffectsHandler;
 import org.orecruncher.dsurround.client.sound.SoundEffect;
 import org.orecruncher.dsurround.registry.RegistryManager;
-import org.orecruncher.dsurround.registry.config.BiomeConfig;
-import org.orecruncher.dsurround.registry.config.SoundConfig;
-import org.orecruncher.dsurround.registry.config.SoundType;
+import org.orecruncher.dsurround.registry.config.models.BiomeConfig;
+import org.orecruncher.dsurround.registry.config.models.SoundConfig;
+import org.orecruncher.dsurround.registry.config.models.SoundType;
 import org.orecruncher.lib.Color;
 import org.orecruncher.lib.MyUtils;
 import org.orecruncher.lib.WeightTable;
@@ -336,10 +336,10 @@ public final class BiomeInfo implements Comparable<BiomeInfo> {
 		if (entry.spotSoundChance != null)
 			setSpotSoundChance(entry.spotSoundChance);
 
-		for (final SoundConfig sr : entry.sounds) {
-			if (RegistryManager.SOUND.isSoundBlocked(new ResourceLocation(sr.sound)))
+		for (final SoundConfig soundConfig : entry.sounds) {
+			if (RegistryManager.SOUND.isSoundBlocked(new ResourceLocation(soundConfig.sound)))
 				continue;
-			final SoundEffect.Builder b = new SoundEffect.Builder(sr);
+			final SoundEffect.Builder b = new SoundEffect.Builder(soundConfig);
 			final SoundEffect s = b.build();
 			if (s.getSoundType() == SoundType.SPOT)
 				addSpotSound(s);

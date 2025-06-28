@@ -28,7 +28,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import org.orecruncher.dsurround.registry.config.SoundMetadataConfig;
+import org.orecruncher.dsurround.registry.config.models.SoundMetadataConfig;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableList;

@@ -40,7 +40,7 @@ import org.orecruncher.dsurround.ModInfo;
 import org.orecruncher.dsurround.client.footsteps.DelayedAcoustic;
 import org.orecruncher.dsurround.registry.Registry;
 import org.orecruncher.dsurround.registry.RegistryManager;
-import org.orecruncher.dsurround.registry.config.ModConfiguration;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
 import org.orecruncher.lib.MCHelper;
 
 import com.google.common.base.MoreObjects;

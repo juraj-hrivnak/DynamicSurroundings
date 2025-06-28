@@ -21,35 +21,24 @@
  * THE SOFTWARE.
  */
 
-package org.orecruncher.dsurround.registry.config;
+package org.orecruncher.dsurround.registry.config.models;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public enum SoundType {
-	BACKGROUND("BACKGROUND"), SPOT("SPOT"), PERIODIC("PERIODIC");
+import com.google.common.collect.ImmutableList;
+import com.google.gson.annotations.SerializedName;
 
-	protected final String name;
-
-	SoundType(@Nonnull final String name) {
-		this.name = name;
-	}
-
-	@Nonnull
-	public String getName() {
-		return this.name;
-	}
-
-	@Nonnull
-	public static SoundType getType(@Nullable final String soundType) {
-		if (soundType == null)
-			return BACKGROUND;
-
-		try {
-			return SoundType.valueOf(soundType.toUpperCase());
-		} catch (final Throwable ex) {
-			ex.printStackTrace();
-		}
-		return BACKGROUND;
-	}
+public class BlockConfig {
+	@SerializedName("blocks")
+	public List<String> blocks = ImmutableList.of();
+	@SerializedName("soundReset")
+	public Boolean soundReset = null;
+	@SerializedName("effectReset")
+	public Boolean effectReset = null;
+	@SerializedName("chance")
+	public Integer chance = null;
+	@SerializedName("sounds")
+	public List<SoundConfig> sounds = ImmutableList.of();
+	@SerializedName("effects")
+	public List<EffectConfig> effects = ImmutableList.of();
 }

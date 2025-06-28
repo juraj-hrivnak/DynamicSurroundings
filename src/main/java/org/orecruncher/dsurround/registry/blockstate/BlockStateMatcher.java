@@ -216,9 +216,9 @@ public final class BlockStateMatcher {
 				}
 
 				// If we have properties it will be a partial generic type
-				// match. Otherwise it will be an exact match on the default
+				// match. Otherwise, it will be an exact match on the default
 				// state.
-				if (props.size() > 0) {
+				if (!props.isEmpty()) {
 					return new BlockStateMatcher(defaultState.getBlock(), props);
 				} else {
 					return new BlockStateMatcher(defaultState);

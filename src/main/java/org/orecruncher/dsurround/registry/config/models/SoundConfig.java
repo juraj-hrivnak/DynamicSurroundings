@@ -1,5 +1,4 @@
-/*
- * This file is part of Dynamic Surroundings, licensed under the MIT License (MIT).
+/* This file is part of Dynamic Surroundings, licensed under the MIT License (MIT).
  *
  * Copyright (c) OreCruncher
  *
@@ -22,39 +21,35 @@
  * THE SOFTWARE.
  */
 
-package org.orecruncher.dsurround.registry.config;
+package org.orecruncher.dsurround.registry.config.models;
 
-import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
-import com.google.common.collect.ImmutableList;
 import com.google.gson.annotations.SerializedName;
 
-public final class BiomeConfig {
-	@SerializedName("biomeName")
-	public String biomeName = null;
+public class SoundConfig {
+	@SerializedName("sound")
+	public String sound = null;
+	@SerializedName("title")
+	public String title = null;
 	@SerializedName("conditions")
-	public String conditions = null;
-	@SerializedName("_comment")
-	public String comment = null;
-	@SerializedName("precipitation")
-	public Boolean hasPrecipitation = null;
-	@SerializedName("dust")
-	public Boolean hasDust = null;
-	@SerializedName("aurora")
-	public Boolean hasAurora = null;
-	@SerializedName("fog")
-	public Boolean hasFog = null;
-	@SerializedName("dustColor")
-	public String dustColor = null;
-	@SerializedName("fogColor")
-	public String fogColor = null;
-	@SerializedName("fogDensity")
-	public Float fogDensity = null;
-	@SerializedName("soundReset")
-	public Boolean soundReset = null;
-	@SerializedName("spotSoundChance")
-	public Integer spotSoundChance = null;
-	@SerializedName("sounds")
-	public List<SoundConfig> sounds = ImmutableList.of();
-
+	public String conditions = StringUtils.EMPTY;
+	@SerializedName("soundType")
+	public String soundType = null;
+	@SerializedName("category")
+	public String soundCategory = null;
+	@SerializedName("volume")
+	public Float volume = null;
+	@SerializedName("pitch")
+	public Float pitch = null;
+	@SerializedName("weight")
+	public Integer weight = null;
+	@SerializedName("variable")
+	public Boolean variable = null;
+	@SerializedName("repeatDelayRandom")
+	public Integer repeatDelayRandom = null;
+	@SerializedName("repeatDelay")
+	public Integer repeatDelay = null;
+	@SerializedName("spot")
+	public Boolean spotSound = null;
 }

@@ -26,7 +26,7 @@ package org.orecruncher.dsurround.registry.footstep;
 
 import javax.annotation.Nonnull;
 
-import org.orecruncher.dsurround.registry.config.VariatorConfig;
+import org.orecruncher.dsurround.registry.config.models.VariatorConfig;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

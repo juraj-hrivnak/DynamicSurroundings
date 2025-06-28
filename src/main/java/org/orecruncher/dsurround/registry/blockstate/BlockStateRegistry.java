@@ -39,10 +39,10 @@ import org.orecruncher.dsurround.client.fx.BlockEffectType;
 import org.orecruncher.dsurround.client.sound.SoundEffect;
 import org.orecruncher.dsurround.registry.Registry;
 import org.orecruncher.dsurround.registry.RegistryManager;
-import org.orecruncher.dsurround.registry.config.BlockConfig;
-import org.orecruncher.dsurround.registry.config.EffectConfig;
-import org.orecruncher.dsurround.registry.config.ModConfiguration;
-import org.orecruncher.dsurround.registry.config.SoundConfig;
+import org.orecruncher.dsurround.registry.config.models.BlockConfig;
+import org.orecruncher.dsurround.registry.config.models.EffectConfig;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
+import org.orecruncher.dsurround.registry.config.models.SoundConfig;
 import org.orecruncher.dsurround.registry.sound.SoundRegistry;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -137,6 +137,9 @@ public final class BlockStateRegistry extends Registry {
 		final SoundRegistry soundRegistry = RegistryManager.SOUND;
 
 		for (final String blockName : entry.blocks) {
+
+			// -- INIT BLOCK DATA --
+
 			final BlockStateMatcher blockInfo = BlockStateMatcher.create(blockName);
 			if (blockInfo == null) {
 				ModBase.log().warn("Unknown block [%s] in block config file", blockName);
@@ -149,24 +152,37 @@ public final class BlockStateRegistry extends Registry {
 				continue;
 			}
 
+			// -- HANDLE RESETS OPTIONS --
+
 			// Reset of a block clears all registry
 			if (entry.soundReset != null && entry.soundReset)
 				blockData.clearSounds();
 			if (entry.effectReset != null && entry.effectReset)
 				blockData.clearEffects();
 
+			// -- HANDLE CHANCE OPTION --
+
 			if (entry.chance != null)
 				blockData.setChance(entry.chance);
 
-			for (final SoundConfig sr : entry.sounds) {
-				if (sr.sound != null && !soundRegistry.isSoundBlocked(new ResourceLocation(sr.sound))) {
-					final SoundEffect.Builder b = new SoundEffect.Builder(sr);
-					if (sr.soundCategory == null)
-						b.setSoundCategory(SoundCategory.BLOCKS);
-					final SoundEffect eff = b.build();
-					blockData.addSound(eff);
-				}
-			}
+			// -- HANDLE SOUND CONFIG --
+
+			for (final SoundConfig soundConfig : entry.sounds) {
+                if (soundConfig.sound == null || soundRegistry.isSoundBlocked(new ResourceLocation(soundConfig.sound)))
+                    continue;
+
+				// -- SOUND EFFECT --
+
+				// build sound effect from the sound config
+                final SoundEffect.Builder builder = new SoundEffect.Builder(soundConfig);
+                if (soundConfig.soundCategory == null) builder.setSoundCategory(SoundCategory.BLOCKS);
+				final SoundEffect soundEffect = builder.build();
+
+				// add sound config to current block data
+                blockData.addSound(soundEffect);
+            }
+
+			// -- HANDLE EFFECT CONFIG --
 
 			for (final EffectConfig e : entry.effects) {
 
@@ -174,18 +190,27 @@ public final class BlockStateRegistry extends Registry {
 					continue;
 
 				final BlockEffectType type = BlockEffectType.get(e.effect);
+
 				if (type == BlockEffectType.UNKNOWN) {
 					ModBase.log().warn("Unknown block effect type in configuration: [%s]", e.effect);
-				} else if (type.isEnabled()) {
-					final int chance = e.chance != null ? e.chance : 100;
-					final BlockEffect blockEffect = type.getInstance(chance);
-					if (blockEffect != null) {
-						if (e.conditions != null)
-							blockEffect.setConditions(e.conditions);
-						blockData.addEffect(blockEffect);
-					}
+					continue;
 				}
-			}
+
+                if (!type.isEnabled())
+                    continue;
+
+				// -- BLOCK EFFECT --
+
+                final int chance = e.chance != null ? e.chance : 100;
+                final BlockEffect blockEffect = type.getInstance(chance);
+
+                if (blockEffect == null)
+					continue;
+
+                if (e.conditions != null) blockEffect.setConditions(e.conditions);
+
+                blockData.addEffect(blockEffect);
+            }
 		}
 	}
 }

@@ -32,8 +32,8 @@ import org.orecruncher.dsurround.ModBase;
 import org.orecruncher.dsurround.ModInfo;
 import org.orecruncher.dsurround.ModOptions;
 import org.orecruncher.dsurround.registry.Registry;
-import org.orecruncher.dsurround.registry.config.EntityConfig;
-import org.orecruncher.dsurround.registry.config.ModConfiguration;
+import org.orecruncher.dsurround.registry.config.models.EntityConfig;
+import org.orecruncher.dsurround.registry.config.models.ModConfiguration;
 import org.orecruncher.dsurround.registry.effect.theme.GloamwoodTheme;
 import org.orecruncher.dsurround.registry.effect.theme.ThemeInfo;
 

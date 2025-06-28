@@ -41,7 +41,8 @@ public class CraftingSoundEffect extends EventEffect {
 
 	private int craftSoundThrottle = 0;
 
-	@SubscribeEvent
+	@SuppressWarnings("unused")
+    @SubscribeEvent
 	public void onEvent(@Nonnull final ItemCraftedEvent event) {
 		if (!ModOptions.sound.enableCraftingSound || !isClientValid(event))
 			return;

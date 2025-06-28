@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.orecruncher.dsurround.registry.config;
+package org.orecruncher.dsurround.registry.config.models;
 
 import com.google.gson.annotations.SerializedName;
 
