@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
 public enum SoundType {
 	BACKGROUND("BACKGROUND"), SPOT("SPOT"), PERIODIC("PERIODIC");
 
-	protected final String name;
+	private final String name;
 
 	SoundType(@Nonnull final String name) {
 		this.name = name;

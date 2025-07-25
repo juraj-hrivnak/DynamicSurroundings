@@ -137,7 +137,7 @@ public final class ConfigData implements Iterable<ModConfiguration> {
 				// in the stream.
 				try {
 					reader.mark(128 * 1024);
-					@SuppressWarnings({ "unused", "resource" })
+					@SuppressWarnings("unused")
 					final JsonReader r = new JsonReader(reader);
 					@SuppressWarnings("unused")
 					final ModConfiguration ref = new Gson().fromJson(reader, ModConfiguration.class);

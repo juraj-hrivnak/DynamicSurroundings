@@ -82,6 +82,7 @@ public final class ServiceManager extends Service {
 		INSTANCE.addService(new AtmosphereService());
 		INSTANCE.addService(new SpeechBubbleService());
 		INSTANCE.addService(new EnvironmentService());
+		INSTANCE.addService(new BlockEventService());
 		INSTANCE.init0();
 	}
 
@@ -112,7 +113,7 @@ public final class ServiceManager extends Service {
 	 *
 	 * @param event Event that was triggered
 	 */
-	@SubscribeEvent
+    @SubscribeEvent
 	public void tickEvent(@Nonnull final TickEvent.ServerTickEvent event) {
 		if (!ModOptions.logging.reportServerStats || event.phase != Phase.END)
 			return;
