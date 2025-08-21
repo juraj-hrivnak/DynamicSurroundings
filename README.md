@@ -1,17 +1,14 @@
-### Dynamic Surroundings
-Forge mod that improves the audio and visual experience of Minecraft.
+### DSurround Extended
 
-<a href="https://minecraft.curseforge.com/projects/dynamic-surroundings"><img src="http://cf.way2muchnoise.eu/versions/dynamic-surroundings.svg" alt="CurseForge Project"/></a>
-</br></br>
-<a href="https://minecraft.curseforge.com/projects/dynamic-surroundings"><img src="http://cf.way2muchnoise.eu/full_dynamic-surroundings_downloads.svg" alt="CurseForge Project"/></a>
-</br></br>
-<a href='https://dynamicsurroundings.readthedocs.io/en/master/?badge=master'>
-    <img src='https://readthedocs.org/projects/dynamicsurroundings/badge/?version=master' alt='Documentation Status' />
-</a>
+This mod is a fork of the Dynamic Surroundings mod for Minecraft 1.12.2.
 
-Credits for textures and sounds can be found [here](https://github.com/OreCruncher/DynamicSurroundings/tree/master/CREDITS.md).  A copy can also be found embedded in the root of the mod JAR.
+Dynamic Surroundings improves the audio and visual experience of Minecraft.
+This fork aims to add extended configuration options while keeping backwards compatibility with the original mod.
+
+Credits for textures and sounds can be found [here](CREDITS.md).  A copy can also be found embedded in the root of the mod JAR.
 
 ### License
+
 The MIT License (MIT)
 
 Copyright 2018 OreCruncher, Abastro
