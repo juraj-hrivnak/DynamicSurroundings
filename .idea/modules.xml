@@ -7,6 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicSurroundings.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicSurroundings.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicSurroundings.patchedMc.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicSurroundings.patchedMc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicSurroundings.test.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicSurroundings.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.orecruncher.dsurround.DynamicSurroundings.api.iml" filepath="$PROJECT_DIR$/.idea/modules/org.orecruncher.dsurround.DynamicSurroundings.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.orecruncher.dsurround.DynamicSurroundings.ideVirtualMain.iml" filepath="$PROJECT_DIR$/.idea/modules/org.orecruncher.dsurround.DynamicSurroundings.ideVirtualMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.orecruncher.dsurround.DynamicSurroundings.patchedMc.iml" filepath="$PROJECT_DIR$/.idea/modules/org.orecruncher.dsurround.DynamicSurroundings.patchedMc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.orecruncher.dsurround.DynamicSurroundings.test.iml" filepath="$PROJECT_DIR$/.idea/modules/org.orecruncher.dsurround.DynamicSurroundings.test.iml" />
     </modules>
   </component>
 </project>
