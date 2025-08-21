@@ -36,6 +36,7 @@ import org.orecruncher.dsurround.registry.dimension.DimensionRegistry;
 import org.orecruncher.dsurround.registry.effect.EffectRegistry;
 import org.orecruncher.dsurround.registry.footstep.FootstepsRegistry;
 import org.orecruncher.dsurround.registry.item.ItemRegistry;
+import teksturepako.dsurround.extended.SoundOverridesRegistry;
 import org.orecruncher.dsurround.registry.sound.SoundRegistry;
 import org.orecruncher.lib.Singleton;
 import org.orecruncher.lib.collections.ObjectArray;
@@ -64,6 +65,11 @@ public final class RegistryManager {
 	public static FootstepsRegistry FOOTSTEPS;
 	@SideOnly(Side.CLIENT)
 	public static EffectRegistry EFFECTS;
+
+	///EXTENDED
+	@SideOnly(Side.CLIENT)
+	public static SoundOverridesRegistry SOUND_OVERRIDES;
+	///EXTENDED_END
 
 	// This guy is the only one shared between client and server
 	public static DimensionRegistry DIMENSION;
@@ -107,6 +113,7 @@ public final class RegistryManager {
 			FOOTSTEPS = new FootstepsRegistry();
 			ITEMS = new ItemRegistry();
 			EFFECTS = new EffectRegistry();
+			SOUND_OVERRIDES = new SoundOverridesRegistry();
 		}
 
 		DIMENSION = new DimensionRegistry();

@@ -43,7 +43,7 @@ public class BlockStateData {
 	public final static BlockEffect[] NO_EFFECTS = {};
 	public final static SoundEffect[] NO_SOUNDS = {};
 
-	protected static final BlockStateData DEFAULT = new BlockStateData();
+	public static final BlockStateData DEFAULT = new BlockStateData();
 
 	@Nonnull
 	public BlockStateData setChance(final int chance) {

@@ -31,7 +31,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;
-import org.orecruncher.dsurround.registry.config.models.extended.SoundOverridesConfig;
+import teksturepako.dsurround.extended.config.models.SoundOverridesConfig;
 
 public final class ModConfiguration {
 
@@ -40,11 +40,13 @@ public final class ModConfiguration {
 	// once it is cached that info would have been lost.
 	public String source = "<UNKNOWN>";
 
-	@SerializedName("soundMetadata")
-	public Map<String, SoundMetadataConfig> sounds = ImmutableMap.of();
-
+	///EXTENDED
 	@SerializedName("soundOverrides")
 	public List<SoundOverridesConfig> soundOverrides = ImmutableList.of();
+	///EXTENDED_END
+
+	@SerializedName("soundMetadata")
+	public Map<String, SoundMetadataConfig> sounds = ImmutableMap.of();
 
 	@SerializedName("biomes")
 	public List<BiomeConfig> biomes = ImmutableList.of();

@@ -1,4 +1,4 @@
-package org.orecruncher.dsurround.registry.config.models.extended;
+package teksturepako.dsurround.extended.config.models;
 
 import com.google.common.collect.ImmutableList;
 import com.google.gson.annotations.SerializedName;

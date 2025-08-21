@@ -44,6 +44,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
+import teksturepako.dsurround.extended.SoundOverridesService;
 
 public final class ServiceManager extends Service {
 
@@ -82,7 +83,9 @@ public final class ServiceManager extends Service {
 		INSTANCE.addService(new AtmosphereService());
 		INSTANCE.addService(new SpeechBubbleService());
 		INSTANCE.addService(new EnvironmentService());
-		INSTANCE.addService(new BlockEventService());
+		///EXTENDED
+		INSTANCE.addService(new SoundOverridesService());
+		///EXTENDED_END
 		INSTANCE.init0();
 	}
 
